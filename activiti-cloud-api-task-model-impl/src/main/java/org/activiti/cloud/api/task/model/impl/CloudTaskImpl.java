@@ -187,7 +187,6 @@ public class CloudTaskImpl extends CloudRuntimeEntityImpl implements CloudTask {
         this.status = status;
     }
 
-    @Override
     public Date getCompletedDate() {
         return completedDate;
     }
@@ -201,7 +200,6 @@ public class CloudTaskImpl extends CloudRuntimeEntityImpl implements CloudTask {
         this.duration = duration;
     }
 
-    @Override
     public long getDuration() {
         return duration;
     }
