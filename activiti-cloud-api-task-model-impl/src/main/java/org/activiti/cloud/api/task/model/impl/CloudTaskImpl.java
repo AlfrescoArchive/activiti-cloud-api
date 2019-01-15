@@ -39,7 +39,7 @@ public class CloudTaskImpl extends CloudRuntimeEntityImpl implements CloudTask {
     private String formKey;
     private TaskStatus status;
     private Date completedDate;
-    private long duration;
+    private Long duration;
 
     public CloudTaskImpl() {
     }
@@ -196,11 +196,11 @@ public class CloudTaskImpl extends CloudRuntimeEntityImpl implements CloudTask {
     }
 
 
-    public void setDuration(long duration) {
+    public void setDuration(Long duration) {
         this.duration = duration;
     }
 
-    public long getDuration() {
+    public Long getDuration() {
         return duration;
     }
 
