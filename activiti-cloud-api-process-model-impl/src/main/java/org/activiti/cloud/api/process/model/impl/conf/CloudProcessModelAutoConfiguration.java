@@ -39,6 +39,7 @@ import org.activiti.cloud.api.process.model.impl.IntegrationRequestImpl;
 import org.activiti.cloud.api.process.model.impl.IntegrationResultImpl;
 import org.activiti.cloud.api.process.model.impl.events.CloudBPMNActivityCancelledEventImpl;
 import org.activiti.cloud.api.process.model.impl.events.CloudBPMNActivityCompletedEventImpl;
+import org.activiti.cloud.api.process.model.impl.events.CloudBPMNActivitySignaledEventImpl;
 import org.activiti.cloud.api.process.model.impl.events.CloudBPMNActivityStartedEventImpl;
 import org.activiti.cloud.api.process.model.impl.events.CloudIntegrationRequestedImpl;
 import org.activiti.cloud.api.process.model.impl.events.CloudIntegrationResultReceivedImpl;
@@ -68,6 +69,8 @@ public class CloudProcessModelAutoConfiguration {
                                               BPMNActivityEvent.ActivityEvents.ACTIVITY_COMPLETED.name()));
         module.registerSubtypes(new NamedType(CloudBPMNActivityCancelledEventImpl.class,
                                               BPMNActivityEvent.ActivityEvents.ACTIVITY_CANCELLED.name()));
+        module.registerSubtypes(new NamedType(CloudBPMNActivitySignaledEventImpl.class,
+                                              BPMNActivityEvent.ActivityEvents.ACTIVITY_SIGNALED.name()));
         module.registerSubtypes(new NamedType(CloudProcessDeployedEventImpl.class,
                                               ProcessDefinitionEvent.ProcessDefinitionEvents.PROCESS_DEPLOYED.name()));
         module.registerSubtypes(new NamedType(CloudProcessStartedEventImpl.class,
