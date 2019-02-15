@@ -3,11 +3,11 @@ github:
   - name: activiti
     repositories:
     - name: activiti-cloud-service-common
-      branch: develop
+      branch: 7.0.x
       useSinglePullRequest: true
     - name: activiti-cloud-acceptance-tests
-      branch: develop
+      branch: 7.0.x
       useSinglePullRequest: true
     - name: activiti-cloud-dependencies
-      branch: develop
+      branch: 7.0.x
       useSinglePullRequest: true
