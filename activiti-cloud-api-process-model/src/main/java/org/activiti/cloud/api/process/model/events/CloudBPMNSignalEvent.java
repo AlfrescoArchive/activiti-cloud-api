@@ -16,6 +16,14 @@
 
 package org.activiti.cloud.api.process.model.events;
 
-public interface CloudBPMNActivitySignaledEvent extends CloudBPMNActivityEvent {
+import org.activiti.api.process.model.BPMNSignal;
+import org.activiti.api.process.model.events.BPMNSignalEvent;
+import org.activiti.cloud.api.model.shared.events.CloudRuntimeEvent;
 
+public interface CloudBPMNSignalEvent extends CloudRuntimeEvent<BPMNSignal, BPMNSignalEvent.SignalEvents> {
+
+	String getProcessDefinitionId();
+
+    String getProcessInstanceId();
+    
 }
