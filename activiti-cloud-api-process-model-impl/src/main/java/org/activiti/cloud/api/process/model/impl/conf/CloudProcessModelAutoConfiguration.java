@@ -40,7 +40,6 @@ import org.activiti.cloud.api.process.model.impl.IntegrationRequestImpl;
 import org.activiti.cloud.api.process.model.impl.IntegrationResultImpl;
 import org.activiti.cloud.api.process.model.impl.events.CloudBPMNActivityCancelledEventImpl;
 import org.activiti.cloud.api.process.model.impl.events.CloudBPMNActivityCompletedEventImpl;
-import org.activiti.cloud.api.process.model.impl.events.CloudBPMNSignalEventImpl;
 import org.activiti.cloud.api.process.model.impl.events.CloudBPMNSignalReceivedEventImpl;
 import org.activiti.cloud.api.process.model.impl.events.CloudBPMNActivityStartedEventImpl;
 import org.activiti.cloud.api.process.model.impl.events.CloudIntegrationRequestedImpl;
