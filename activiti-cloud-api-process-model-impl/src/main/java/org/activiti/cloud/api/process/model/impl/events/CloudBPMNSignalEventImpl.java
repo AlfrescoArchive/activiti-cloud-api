@@ -45,8 +45,9 @@ public abstract class CloudBPMNSignalEventImpl extends CloudRuntimeEventImpl<BPM
         setProcessDefinitionId(processDefinitionId);
         setProcessInstanceId(processInstanceId);
         
-        if (entity!=null)
+        if (entity!=null) {
             setEntityId(entity.getElementId());
+        }
     }
     
 }
