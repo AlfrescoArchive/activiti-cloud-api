@@ -26,6 +26,7 @@ import com.fasterxml.jackson.databind.module.SimpleAbstractTypeResolver;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.activiti.api.process.model.events.BPMNActivityEvent;
 import org.activiti.api.process.model.events.BPMNSignalEvent;
+import org.activiti.api.process.model.events.BPMNTimerEvent;
 import org.activiti.api.process.model.events.IntegrationEvent;
 import org.activiti.api.process.model.events.ProcessDefinitionEvent;
 import org.activiti.api.process.model.events.ProcessRuntimeEvent;
@@ -41,6 +42,7 @@ import org.activiti.cloud.api.process.model.impl.IntegrationResultImpl;
 import org.activiti.cloud.api.process.model.impl.events.CloudBPMNActivityCancelledEventImpl;
 import org.activiti.cloud.api.process.model.impl.events.CloudBPMNActivityCompletedEventImpl;
 import org.activiti.cloud.api.process.model.impl.events.CloudBPMNSignalReceivedEventImpl;
+import org.activiti.cloud.api.process.model.impl.events.CloudBPMNTimerFiredEventImpl;
 import org.activiti.cloud.api.process.model.impl.events.CloudBPMNActivityStartedEventImpl;
 import org.activiti.cloud.api.process.model.impl.events.CloudIntegrationRequestedImpl;
 import org.activiti.cloud.api.process.model.impl.events.CloudIntegrationResultReceivedImpl;
@@ -95,6 +97,8 @@ public class CloudProcessModelAutoConfiguration {
                                               IntegrationEvent.IntegrationEvents.INTEGRATION_REQUESTED.name()));
         module.registerSubtypes(new NamedType(CloudIntegrationResultReceivedImpl.class,
                                               IntegrationEvent.IntegrationEvents.INTEGRATION_RESULT_RECEIVED.name()));
+        module.registerSubtypes(new NamedType(CloudBPMNTimerFiredEventImpl.class,
+                                              BPMNTimerEvent.TimerEvents.TIMER_FIRED.name()));
 
         SimpleAbstractTypeResolver resolver = new SimpleAbstractTypeResolver() {
             //this is a workaround for https://github.com/FasterXML/jackson-databind/issues/2019
