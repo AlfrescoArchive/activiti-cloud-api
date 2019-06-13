@@ -44,6 +44,7 @@ public class CloudTaskImpl extends CloudRuntimeEntityImpl implements CloudTask {
     private Long duration;
     private Integer processDefinitionVersion;
     private String businessKey;
+    private String taskDefinitionKey;
 
     public CloudTaskImpl() {
     }
@@ -65,6 +66,7 @@ public class CloudTaskImpl extends CloudRuntimeEntityImpl implements CloudTask {
         status = task.getStatus();
         processDefinitionVersion = task.getProcessDefinitionVersion();
         businessKey = task.getBusinessKey();
+        taskDefinitionKey = task.getTaskDefinitionKey();
     }
 
     @Override
@@ -233,6 +235,17 @@ public class CloudTaskImpl extends CloudRuntimeEntityImpl implements CloudTask {
     public Long getDuration() {
         return duration;
     }
+    
+    @Override
+    public String getTaskDefinitionKey() {
+        return taskDefinitionKey;
+    }
+
+    public void setTaskDefinitionKey(String taskDefinitionKey) {
+        this.taskDefinitionKey = taskDefinitionKey;
+    }
+
+    
 
     @Override
     public String toString() {
@@ -253,6 +266,7 @@ public class CloudTaskImpl extends CloudRuntimeEntityImpl implements CloudTask {
                 ", status=" + status +
                 ", processDefinitionVersion=" + processDefinitionVersion +
                 ", businessKey=" + businessKey +
+                ", taskDefinitionKey=" + taskDefinitionKey +
                 '}';
     }
 
