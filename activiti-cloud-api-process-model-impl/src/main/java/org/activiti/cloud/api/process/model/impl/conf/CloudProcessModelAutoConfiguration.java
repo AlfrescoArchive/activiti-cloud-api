@@ -43,6 +43,7 @@ import org.activiti.cloud.api.process.model.impl.events.CloudBPMNActivityCancell
 import org.activiti.cloud.api.process.model.impl.events.CloudBPMNActivityCompletedEventImpl;
 import org.activiti.cloud.api.process.model.impl.events.CloudBPMNSignalReceivedEventImpl;
 import org.activiti.cloud.api.process.model.impl.events.CloudBPMNTimerFiredEventImpl;
+import org.activiti.cloud.api.process.model.impl.events.CloudBPMNTimerScheduledEventImpl;
 import org.activiti.cloud.api.process.model.impl.events.CloudBPMNActivityStartedEventImpl;
 import org.activiti.cloud.api.process.model.impl.events.CloudIntegrationRequestedImpl;
 import org.activiti.cloud.api.process.model.impl.events.CloudIntegrationResultReceivedImpl;
@@ -99,6 +100,8 @@ public class CloudProcessModelAutoConfiguration {
                                               IntegrationEvent.IntegrationEvents.INTEGRATION_RESULT_RECEIVED.name()));
         module.registerSubtypes(new NamedType(CloudBPMNTimerFiredEventImpl.class,
                                               BPMNTimerEvent.TimerEvents.TIMER_FIRED.name()));
+        module.registerSubtypes(new NamedType(CloudBPMNTimerScheduledEventImpl.class,
+                                              BPMNTimerEvent.TimerEvents.TIMER_SCHEDULED.name()));
 
         SimpleAbstractTypeResolver resolver = new SimpleAbstractTypeResolver() {
             //this is a workaround for https://github.com/FasterXML/jackson-databind/issues/2019
