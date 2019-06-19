@@ -42,7 +42,10 @@ import org.activiti.cloud.api.process.model.impl.IntegrationResultImpl;
 import org.activiti.cloud.api.process.model.impl.events.CloudBPMNActivityCancelledEventImpl;
 import org.activiti.cloud.api.process.model.impl.events.CloudBPMNActivityCompletedEventImpl;
 import org.activiti.cloud.api.process.model.impl.events.CloudBPMNSignalReceivedEventImpl;
+import org.activiti.cloud.api.process.model.impl.events.CloudBPMNTimerExecutionFailureEventImpl;
+import org.activiti.cloud.api.process.model.impl.events.CloudBPMNTimerExecutionSuccessEventImpl;
 import org.activiti.cloud.api.process.model.impl.events.CloudBPMNTimerFiredEventImpl;
+import org.activiti.cloud.api.process.model.impl.events.CloudBPMNTimerRetriesDecrementedEventImpl;
 import org.activiti.cloud.api.process.model.impl.events.CloudBPMNTimerScheduledEventImpl;
 import org.activiti.cloud.api.process.model.impl.events.CloudBPMNActivityStartedEventImpl;
 import org.activiti.cloud.api.process.model.impl.events.CloudIntegrationRequestedImpl;
@@ -102,6 +105,12 @@ public class CloudProcessModelAutoConfiguration {
                                               BPMNTimerEvent.TimerEvents.TIMER_FIRED.name()));
         module.registerSubtypes(new NamedType(CloudBPMNTimerScheduledEventImpl.class,
                                               BPMNTimerEvent.TimerEvents.TIMER_SCHEDULED.name()));
+        module.registerSubtypes(new NamedType(CloudBPMNTimerExecutionSuccessEventImpl.class,
+                                              BPMNTimerEvent.TimerEvents.JOB_EXECUTION_SUCCESS.name()));
+        module.registerSubtypes(new NamedType(CloudBPMNTimerExecutionFailureEventImpl.class,
+                                              BPMNTimerEvent.TimerEvents.JOB_EXECUTION_FAILURE.name()));
+        module.registerSubtypes(new NamedType(CloudBPMNTimerRetriesDecrementedEventImpl.class,
+                                              BPMNTimerEvent.TimerEvents.JOB_RETRIES_DECREMENTED.name()));
 
         SimpleAbstractTypeResolver resolver = new SimpleAbstractTypeResolver() {
             //this is a workaround for https://github.com/FasterXML/jackson-databind/issues/2019
