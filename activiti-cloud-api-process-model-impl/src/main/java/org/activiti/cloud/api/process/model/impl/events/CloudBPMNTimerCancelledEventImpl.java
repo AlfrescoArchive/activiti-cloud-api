@@ -18,26 +18,26 @@ package org.activiti.cloud.api.process.model.impl.events;
 
 import org.activiti.api.process.model.BPMNTimer;
 import org.activiti.api.process.model.events.BPMNTimerEvent;
-import org.activiti.cloud.api.process.model.events.CloudBPMNTimerCanceledEvent;
+import org.activiti.cloud.api.process.model.events.CloudBPMNTimerCancelledEvent;
 
-public class CloudBPMNTimerCanceledEventImpl extends CloudBPMNTimerEventImpl implements CloudBPMNTimerCanceledEvent {
+public class CloudBPMNTimerCancelledEventImpl extends CloudBPMNTimerEventImpl implements CloudBPMNTimerCancelledEvent {
 
-    public CloudBPMNTimerCanceledEventImpl() {
+    public CloudBPMNTimerCancelledEventImpl() {
     }
 
-    public CloudBPMNTimerCanceledEventImpl(BPMNTimer entity,
-                                        String processDefinitionId,
-                                        String processInstanceId) {
+    public CloudBPMNTimerCancelledEventImpl(BPMNTimer entity,
+                                            String processDefinitionId,
+                                            String processInstanceId) {
         super(entity,
               processDefinitionId,
               processInstanceId);
     }
 
-    public CloudBPMNTimerCanceledEventImpl(String id,
-                                        Long timestamp,
-                                        BPMNTimer entity,
-                                        String processDefinitionId,
-                                        String processInstanceId) {
+    public CloudBPMNTimerCancelledEventImpl(String id,
+                                            Long timestamp,
+                                            BPMNTimer entity,
+                                            String processDefinitionId,
+                                            String processInstanceId) {
         super(id,
               timestamp,
               entity,
@@ -47,6 +47,6 @@ public class CloudBPMNTimerCanceledEventImpl extends CloudBPMNTimerEventImpl imp
 
     @Override
     public BPMNTimerEvent.TimerEvents getEventType() {
-        return BPMNTimerEvent.TimerEvents.JOB_CANCELED;
+        return BPMNTimerEvent.TimerEvents.TIMER_CANCELLED;
     }
 }

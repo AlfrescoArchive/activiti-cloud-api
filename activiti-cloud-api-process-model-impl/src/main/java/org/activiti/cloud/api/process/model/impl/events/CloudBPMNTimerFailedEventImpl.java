@@ -18,26 +18,26 @@ package org.activiti.cloud.api.process.model.impl.events;
 
 import org.activiti.api.process.model.BPMNTimer;
 import org.activiti.api.process.model.events.BPMNTimerEvent;
-import org.activiti.cloud.api.process.model.events.CloudBPMNTimerExecutionSuccessEvent;
+import org.activiti.cloud.api.process.model.events.CloudBPMNTimerFailedEvent;
 
-public class CloudBPMNTimerExecutionSuccessEventImpl extends CloudBPMNTimerEventImpl implements CloudBPMNTimerExecutionSuccessEvent {
+public class CloudBPMNTimerFailedEventImpl extends CloudBPMNTimerEventImpl implements CloudBPMNTimerFailedEvent {
 
-    public CloudBPMNTimerExecutionSuccessEventImpl() {
+    public CloudBPMNTimerFailedEventImpl() {
     }
 
-    public CloudBPMNTimerExecutionSuccessEventImpl(BPMNTimer entity,
-                                        String processDefinitionId,
-                                        String processInstanceId) {
+    public CloudBPMNTimerFailedEventImpl(BPMNTimer entity,
+                                         String processDefinitionId,
+                                         String processInstanceId) {
         super(entity,
               processDefinitionId,
               processInstanceId);
     }
 
-    public CloudBPMNTimerExecutionSuccessEventImpl(String id,
-                                        Long timestamp,
-                                        BPMNTimer entity,
-                                        String processDefinitionId,
-                                        String processInstanceId) {
+    public CloudBPMNTimerFailedEventImpl(String id,
+                                         Long timestamp,
+                                         BPMNTimer entity,
+                                         String processDefinitionId,
+                                         String processInstanceId) {
         super(id,
               timestamp,
               entity,
@@ -47,6 +47,6 @@ public class CloudBPMNTimerExecutionSuccessEventImpl extends CloudBPMNTimerEvent
 
     @Override
     public BPMNTimerEvent.TimerEvents getEventType() {
-        return BPMNTimerEvent.TimerEvents.JOB_EXECUTION_SUCCESS;
+        return BPMNTimerEvent.TimerEvents.TIMER_FAILED;
     }
 }

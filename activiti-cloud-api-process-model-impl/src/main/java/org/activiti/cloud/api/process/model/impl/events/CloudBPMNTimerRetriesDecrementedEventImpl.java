@@ -26,18 +26,18 @@ public class CloudBPMNTimerRetriesDecrementedEventImpl extends CloudBPMNTimerEve
     }
 
     public CloudBPMNTimerRetriesDecrementedEventImpl(BPMNTimer entity,
-                                        String processDefinitionId,
-                                        String processInstanceId) {
+                                                     String processDefinitionId,
+                                                     String processInstanceId) {
         super(entity,
               processDefinitionId,
               processInstanceId);
     }
 
     public CloudBPMNTimerRetriesDecrementedEventImpl(String id,
-                                        Long timestamp,
-                                        BPMNTimer entity,
-                                        String processDefinitionId,
-                                        String processInstanceId) {
+                                                     Long timestamp,
+                                                     BPMNTimer entity,
+                                                     String processDefinitionId,
+                                                     String processInstanceId) {
         super(id,
               timestamp,
               entity,
@@ -47,6 +47,6 @@ public class CloudBPMNTimerRetriesDecrementedEventImpl extends CloudBPMNTimerEve
 
     @Override
     public BPMNTimerEvent.TimerEvents getEventType() {
-        return BPMNTimerEvent.TimerEvents.JOB_RETRIES_DECREMENTED;
+        return BPMNTimerEvent.TimerEvents.TIMER_RETRIES_DECREMENTED;
     }
 }
