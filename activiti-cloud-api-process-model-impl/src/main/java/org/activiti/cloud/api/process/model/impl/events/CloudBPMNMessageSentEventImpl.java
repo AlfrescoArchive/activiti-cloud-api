@@ -49,4 +49,15 @@ public class CloudBPMNMessageSentEventImpl extends CloudBPMNMessageEventImpl imp
     public BPMNMessageEvent.MessageEvents getEventType() {
         return BPMNMessageEvent.MessageEvents.MESSAGE_SENT;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("CloudBPMNMessageSentEventImpl [getEventType()=")
+               .append(getEventType())
+               .append(", toString()=")
+               .append(super.toString())
+               .append("]");
+        return builder.toString();
+    }
 }

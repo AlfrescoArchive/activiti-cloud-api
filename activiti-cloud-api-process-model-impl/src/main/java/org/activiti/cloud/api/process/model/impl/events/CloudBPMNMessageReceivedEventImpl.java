@@ -19,7 +19,6 @@ package org.activiti.cloud.api.process.model.impl.events;
 import org.activiti.api.process.model.BPMNMessage;
 import org.activiti.api.process.model.events.BPMNMessageEvent;
 import org.activiti.cloud.api.process.model.events.CloudBPMNMessageReceivedEvent;
-import org.activiti.cloud.api.process.model.events.CloudBPMNMessageWaitingEvent;
 
 public class CloudBPMNMessageReceivedEventImpl extends CloudBPMNMessageEventImpl implements CloudBPMNMessageReceivedEvent {
 
@@ -49,5 +48,16 @@ public class CloudBPMNMessageReceivedEventImpl extends CloudBPMNMessageEventImpl
     @Override
     public BPMNMessageEvent.MessageEvents getEventType() {
         return BPMNMessageEvent.MessageEvents.MESSAGE_RECEIVED;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("CloudBPMNMessageReceivedEventImpl [getEventType()=")
+               .append(getEventType())
+               .append(", toString()=")
+               .append(super.toString())
+               .append("]");
+        return builder.toString();
     }
 }

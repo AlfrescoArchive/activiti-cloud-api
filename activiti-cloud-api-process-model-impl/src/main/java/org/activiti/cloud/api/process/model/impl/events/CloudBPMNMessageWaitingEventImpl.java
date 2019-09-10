@@ -49,4 +49,15 @@ public class CloudBPMNMessageWaitingEventImpl extends CloudBPMNMessageEventImpl 
     public BPMNMessageEvent.MessageEvents getEventType() {
         return BPMNMessageEvent.MessageEvents.MESSAGE_WAITING;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("CloudBPMNMessageWaitingEventImpl [getEventType()=")
+               .append(getEventType())
+               .append(", toString()=")
+               .append(super.toString())
+               .append("]");
+        return builder.toString();
+    }
 }
