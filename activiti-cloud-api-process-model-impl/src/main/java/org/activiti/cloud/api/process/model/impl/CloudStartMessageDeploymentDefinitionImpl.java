@@ -49,10 +49,9 @@ public class CloudStartMessageDeploymentDefinitionImpl extends CloudRuntimeEntit
     }
 
     @Override
-    public StartMessageSubscription getMessageEventSubscription() {
+    public StartMessageSubscription getMessageSubscription() {
         return messageEventSubscription;
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(messageEventSubscription, processDefinition);
