@@ -18,8 +18,8 @@ package org.activiti.cloud.api.process.model.impl;
 
 import java.util.Objects;
 
-import org.activiti.api.process.model.MessageEventSubscription;
 import org.activiti.api.process.model.ProcessDefinition;
+import org.activiti.api.process.model.StartMessageSubscription;
 import org.activiti.cloud.api.model.shared.impl.CloudRuntimeEntityImpl;
 import org.activiti.cloud.api.process.model.CloudStartMessageDeploymentDefinition;
 
@@ -28,7 +28,7 @@ public class CloudStartMessageDeploymentDefinitionImpl extends CloudRuntimeEntit
     
     private ProcessDefinition processDefinition;
     
-    private MessageEventSubscription messageEventSubscription;
+    private StartMessageSubscription messageEventSubscription;
 
     private CloudStartMessageDeploymentDefinitionImpl(Builder builder) {
         this.processDefinition = builder.processDefinition;
@@ -49,7 +49,7 @@ public class CloudStartMessageDeploymentDefinitionImpl extends CloudRuntimeEntit
     }
 
     @Override
-    public MessageEventSubscription getMessageEventSubscription() {
+    public StartMessageSubscription getMessageEventSubscription() {
         return messageEventSubscription;
     }
 
@@ -95,7 +95,7 @@ public class CloudStartMessageDeploymentDefinitionImpl extends CloudRuntimeEntit
     public static final class Builder {
 
         private ProcessDefinition processDefinition;
-        private MessageEventSubscription messageEventSubscription;
+        private StartMessageSubscription messageEventSubscription;
         private String appName;
         private String appVersion;
         private String serviceName;
@@ -121,7 +121,7 @@ public class CloudStartMessageDeploymentDefinitionImpl extends CloudRuntimeEntit
         * @param messageEventSubscription field to set
         * @return builder
         */
-        public Builder withMessageEventSubscription(MessageEventSubscription messageEventSubscription) {
+        public Builder withMessageEventSubscription(StartMessageSubscription messageEventSubscription) {
             this.messageEventSubscription = messageEventSubscription;
             return this;
         }

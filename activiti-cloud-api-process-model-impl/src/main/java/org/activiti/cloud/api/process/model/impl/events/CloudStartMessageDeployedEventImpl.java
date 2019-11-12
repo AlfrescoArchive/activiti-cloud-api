@@ -34,7 +34,7 @@ public class CloudStartMessageDeployedEventImpl extends CloudRuntimeEventImpl<St
     public CloudStartMessageDeployedEventImpl(StartMessageDeploymentDefinition entity) {
         super(entity);
         
-        setEntityId(entity.getMessageEventSubscription().getId());
+        setEntityId(entity.getMessageSubscription().getId());
         
         setProcessDefinitionId(entity.getProcessDefinition().getId());
         setProcessDefinitionKey(entity.getProcessDefinition().getKey());
@@ -47,7 +47,7 @@ public class CloudStartMessageDeployedEventImpl extends CloudRuntimeEventImpl<St
         super(id, timestamp, entity);
         
         if (getEntity() != null)
-            setEntityId(getEntity().getMessageEventSubscription().getId());
+            setEntityId(getEntity().getMessageSubscription().getId());
     }    
 
     @Override
