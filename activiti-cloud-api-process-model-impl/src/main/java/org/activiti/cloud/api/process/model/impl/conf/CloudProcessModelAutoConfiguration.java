@@ -16,29 +16,24 @@
 
 package org.activiti.cloud.api.process.model.impl.conf;
 
-import com.fasterxml.jackson.core.Version;
-import com.fasterxml.jackson.databind.BeanDescription;
-import com.fasterxml.jackson.databind.DeserializationConfig;
-import com.fasterxml.jackson.databind.JavaType;
-import com.fasterxml.jackson.databind.Module;
-import com.fasterxml.jackson.databind.jsontype.NamedType;
-import com.fasterxml.jackson.databind.module.SimpleAbstractTypeResolver;
-import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.activiti.api.process.model.events.BPMNActivityEvent;
 import org.activiti.api.process.model.events.BPMNErrorReceivedEvent;
 import org.activiti.api.process.model.events.BPMNMessageEvent;
 import org.activiti.api.process.model.events.BPMNSignalEvent;
 import org.activiti.api.process.model.events.BPMNTimerEvent;
 import org.activiti.api.process.model.events.IntegrationEvent;
+import org.activiti.api.process.model.events.MessageDefinitionEvent;
 import org.activiti.api.process.model.events.ProcessDefinitionEvent;
 import org.activiti.api.process.model.events.ProcessRuntimeEvent;
 import org.activiti.api.process.model.events.SequenceFlowEvent;
 import org.activiti.cloud.api.process.model.CloudProcessDefinition;
 import org.activiti.cloud.api.process.model.CloudProcessInstance;
+import org.activiti.cloud.api.process.model.CloudStartMessageDeploymentDefinition;
 import org.activiti.cloud.api.process.model.IntegrationRequest;
 import org.activiti.cloud.api.process.model.IntegrationResult;
 import org.activiti.cloud.api.process.model.impl.CloudProcessDefinitionImpl;
 import org.activiti.cloud.api.process.model.impl.CloudProcessInstanceImpl;
+import org.activiti.cloud.api.process.model.impl.CloudStartMessageDeploymentDefinitionImpl;
 import org.activiti.cloud.api.process.model.impl.IntegrationRequestImpl;
 import org.activiti.cloud.api.process.model.impl.IntegrationResultImpl;
 import org.activiti.cloud.api.process.model.impl.events.CloudBPMNActivityCancelledEventImpl;
@@ -66,8 +61,18 @@ import org.activiti.cloud.api.process.model.impl.events.CloudProcessStartedEvent
 import org.activiti.cloud.api.process.model.impl.events.CloudProcessSuspendedEventImpl;
 import org.activiti.cloud.api.process.model.impl.events.CloudProcessUpdatedEventImpl;
 import org.activiti.cloud.api.process.model.impl.events.CloudSequenceFlowTakenImpl;
+import org.activiti.cloud.api.process.model.impl.events.CloudStartMessageDeployedEventImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import com.fasterxml.jackson.core.Version;
+import com.fasterxml.jackson.databind.BeanDescription;
+import com.fasterxml.jackson.databind.DeserializationConfig;
+import com.fasterxml.jackson.databind.JavaType;
+import com.fasterxml.jackson.databind.Module;
+import com.fasterxml.jackson.databind.jsontype.NamedType;
+import com.fasterxml.jackson.databind.module.SimpleAbstractTypeResolver;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 
 @Configuration
 public class CloudProcessModelAutoConfiguration {
@@ -87,6 +92,8 @@ public class CloudProcessModelAutoConfiguration {
                                               BPMNSignalEvent.SignalEvents.SIGNAL_RECEIVED.name()));
         module.registerSubtypes(new NamedType(CloudProcessDeployedEventImpl.class,
                                               ProcessDefinitionEvent.ProcessDefinitionEvents.PROCESS_DEPLOYED.name()));
+        module.registerSubtypes(new NamedType(CloudStartMessageDeployedEventImpl.class,
+                                              MessageDefinitionEvent.MessageDefinitionEvents.START_MESSAGE_DEPLOYED.name()));
         module.registerSubtypes(new NamedType(CloudProcessStartedEventImpl.class,
                                               ProcessRuntimeEvent.ProcessEvents.PROCESS_STARTED.name()));
         module.registerSubtypes(new NamedType(CloudProcessCreatedEventImpl.class,
@@ -148,6 +155,8 @@ public class CloudProcessModelAutoConfiguration {
 
         resolver.addMapping(CloudProcessDefinition.class,
                             CloudProcessDefinitionImpl.class);
+        resolver.addMapping(CloudStartMessageDeploymentDefinition.class,
+                            CloudStartMessageDeploymentDefinitionImpl.class);
         resolver.addMapping(CloudProcessInstance.class,
                             CloudProcessInstanceImpl.class);
 
