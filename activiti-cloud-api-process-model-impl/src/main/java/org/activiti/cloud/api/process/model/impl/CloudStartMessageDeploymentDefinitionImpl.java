@@ -28,11 +28,11 @@ public class CloudStartMessageDeploymentDefinitionImpl extends CloudRuntimeEntit
     
     private ProcessDefinition processDefinition;
     
-    private StartMessageSubscription messageEventSubscription;
+    private StartMessageSubscription messageSubscription;
 
     private CloudStartMessageDeploymentDefinitionImpl(Builder builder) {
         this.processDefinition = builder.processDefinition;
-        this.messageEventSubscription = builder.messageEventSubscription;
+        this.messageSubscription = builder.messageSubscription;
         super.setAppName(builder.appName);
         super.setAppVersion(builder.appVersion);
         super.setServiceName(builder.serviceName);
@@ -50,11 +50,11 @@ public class CloudStartMessageDeploymentDefinitionImpl extends CloudRuntimeEntit
 
     @Override
     public StartMessageSubscription getMessageSubscription() {
-        return messageEventSubscription;
+        return messageSubscription;
     }
     @Override
     public int hashCode() {
-        return Objects.hash(messageEventSubscription, processDefinition);
+        return Objects.hash(messageSubscription, processDefinition);
     }
 
     @Override
@@ -69,7 +69,7 @@ public class CloudStartMessageDeploymentDefinitionImpl extends CloudRuntimeEntit
             return false;
         }
         CloudStartMessageDeploymentDefinitionImpl other = (CloudStartMessageDeploymentDefinitionImpl) obj;
-        return Objects.equals(messageEventSubscription, other.messageEventSubscription) && 
+        return Objects.equals(messageSubscription, other.messageSubscription) && 
                Objects.equals(processDefinition, other.processDefinition);
     }
 
@@ -78,8 +78,8 @@ public class CloudStartMessageDeploymentDefinitionImpl extends CloudRuntimeEntit
         StringBuilder builder = new StringBuilder();
         builder.append("CloudStartMessageDeploymentDefinitionImpl [processDefinition=")
                .append(processDefinition)
-               .append(", messageEventSubscription=")
-               .append(messageEventSubscription)
+               .append(", messageSubscription=")
+               .append(messageSubscription)
                .append("]");
         return builder.toString();
     }
@@ -94,7 +94,7 @@ public class CloudStartMessageDeploymentDefinitionImpl extends CloudRuntimeEntit
     public static final class Builder {
 
         private ProcessDefinition processDefinition;
-        private StartMessageSubscription messageEventSubscription;
+        private StartMessageSubscription messageSubscription;
         private String appName;
         private String appVersion;
         private String serviceName;
@@ -117,11 +117,11 @@ public class CloudStartMessageDeploymentDefinitionImpl extends CloudRuntimeEntit
 
         /**
         * Builder method for messageEventSubscription parameter.
-        * @param messageEventSubscription field to set
+        * @param messageSubscription field to set
         * @return builder
         */
-        public Builder withMessageEventSubscription(StartMessageSubscription messageEventSubscription) {
-            this.messageEventSubscription = messageEventSubscription;
+        public Builder withMessageSubscription(StartMessageSubscription messageSubscription) {
+            this.messageSubscription = messageSubscription;
             return this;
         }
 
