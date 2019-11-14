@@ -22,21 +22,24 @@ import org.activiti.api.process.model.events.MessageSubscriptionEvent.MessageSub
 import org.activiti.cloud.api.model.shared.impl.events.CloudRuntimeEventImpl;
 import org.activiti.cloud.api.process.model.events.CloudMessageSubscriptionCancelledEvent;
 
-public class CloudMessageSubscriptionCancelledEventImpl  extends CloudRuntimeEventImpl<MessageSubscription, MessageSubscriptionEvent.MessageSubscriptionEvents> implements CloudMessageSubscriptionCancelledEvent {
+public class CloudMessageSubscriptionCancelledEventImpl extends CloudRuntimeEventImpl<MessageSubscription, MessageSubscriptionEvent.MessageSubscriptionEvents> 
+                                                        implements CloudMessageSubscriptionCancelledEvent {
 
-    public CloudMessageSubscriptionCancelledEventImpl() {
+    private CloudMessageSubscriptionCancelledEventImpl(Builder builder) {
+       this(builder.entity);
     }
 
-    public CloudMessageSubscriptionCancelledEventImpl(MessageSubscription entity,
-                                           String processDefinitionId,
-                                           String processInstanceId) {
+    CloudMessageSubscriptionCancelledEventImpl() {
+    }
+
+    public CloudMessageSubscriptionCancelledEventImpl(MessageSubscription entity) {
         super(entity);    
         
         setProcessInstanceId(entity.getProcessInstanceId());
         setProcessDefinitionId(entity.getProcessDefinitionId());
         
         if (entity!=null) {
-            setEntityId(entity.getActivityId());
+            setEntityId(entity.getId());
         }
     }
     
@@ -53,7 +56,7 @@ public class CloudMessageSubscriptionCancelledEventImpl  extends CloudRuntimeEve
         setProcessInstanceId(processInstanceId);
         
         if (entity!=null) {
-            setEntityId(entity.getActivityId());
+            setEntityId(entity.getId());
         }
     }
     
@@ -71,5 +74,74 @@ public class CloudMessageSubscriptionCancelledEventImpl  extends CloudRuntimeEve
                .append(super.toString())
                .append("]");
         return builder.toString();
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!super.equals(obj)) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Creates a builder to build {@link CloudMessageSubscriptionCancelledEventImpl}.
+     * @return created builder
+     */
+    public static Builder builder() {
+        return new Builder();
+    }
+    
+    /**
+     * Creates a builder to build {@link CloudMessageSubscriptionCancelledEventImpl} and initialize it with the given object.
+     * @param cloudMessageSubscriptionCancelledEventImpl to initialize the builder with
+     * @return created builder
+     */
+    public static Builder builderFrom(CloudMessageSubscriptionCancelledEventImpl cloudMessageSubscriptionCancelledEventImpl) {
+        return new Builder(cloudMessageSubscriptionCancelledEventImpl);
+    }
+
+    /**
+     * Builder to build {@link CloudMessageSubscriptionCancelledEventImpl}.
+     */
+    public static final class Builder {
+
+        private MessageSubscription entity;
+
+        public Builder() {
+        }
+
+        private Builder(CloudMessageSubscriptionCancelledEventImpl cloudMessageSubscriptionCancelledEventImpl) {
+            this.entity = cloudMessageSubscriptionCancelledEventImpl.getEntity();
+        }
+
+        /**
+        * Builder method for entity parameter.
+        * @param entity field to set
+        * @return builder
+        */
+        public Builder withEntity(MessageSubscription entity) {
+            this.entity = entity;
+            return this;
+        }
+
+        /**
+        * Builder method of the builder.
+        * @return built class
+        */
+        public CloudMessageSubscriptionCancelledEventImpl build() {
+            return new CloudMessageSubscriptionCancelledEventImpl(this);
+        }
     }
 }
