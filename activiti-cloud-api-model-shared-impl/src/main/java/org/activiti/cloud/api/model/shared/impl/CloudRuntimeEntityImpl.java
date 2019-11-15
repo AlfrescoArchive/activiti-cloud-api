@@ -16,9 +16,10 @@
 
 package org.activiti.cloud.api.model.shared.impl;
 
+import org.activiti.api.runtime.model.impl.ApplicationElementImpl;
 import org.activiti.cloud.api.model.shared.CloudRuntimeEntity;
 
-public class CloudRuntimeEntityImpl implements CloudRuntimeEntity {
+public class CloudRuntimeEntityImpl extends ApplicationElementImpl implements CloudRuntimeEntity {
 
     private String appName;
     private String appVersion;

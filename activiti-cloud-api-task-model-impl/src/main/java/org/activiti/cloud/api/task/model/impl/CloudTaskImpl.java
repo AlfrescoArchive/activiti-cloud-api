@@ -20,7 +20,6 @@ import java.util.Date;
 import java.util.Objects;
 
 import org.activiti.api.task.model.Task;
-import org.activiti.api.task.model.impl.TaskImpl;
 import org.activiti.cloud.api.model.shared.impl.CloudRuntimeEntityImpl;
 import org.activiti.cloud.api.task.model.CloudTask;
 
@@ -65,6 +64,7 @@ public class CloudTaskImpl extends CloudRuntimeEntityImpl implements CloudTask {
         status = task.getStatus();
         processDefinitionVersion = task.getProcessDefinitionVersion();
         businessKey = task.getBusinessKey();
+        setAppVersion(task.getAppVersion());
     }
 
     @Override
@@ -171,7 +171,6 @@ public class CloudTaskImpl extends CloudRuntimeEntityImpl implements CloudTask {
         return processDefinitionVersion;
     }
 
-    
     public void setProcessDefinitionVersion(Integer processDefinitionVersion) {
         this.processDefinitionVersion = processDefinitionVersion;
     }
@@ -224,7 +223,6 @@ public class CloudTaskImpl extends CloudRuntimeEntityImpl implements CloudTask {
     public void setCompletedDate(Date completedDate) {
         this.completedDate = completedDate;
     }
-
 
     public void setDuration(Long duration) {
         this.duration = duration;

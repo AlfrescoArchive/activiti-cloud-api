@@ -39,6 +39,7 @@ public class CloudProcessDefinitionImpl extends CloudRuntimeEntityImpl implement
         description = processDefinition.getDescription();
         version = processDefinition.getVersion();
         formKey = processDefinition.getFormKey();
+        setAppVersion(processDefinition.getAppVersion());
     }
 
     @Override

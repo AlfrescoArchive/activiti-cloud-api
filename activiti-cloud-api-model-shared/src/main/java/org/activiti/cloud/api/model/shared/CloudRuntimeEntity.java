@@ -16,11 +16,11 @@
 
 package org.activiti.cloud.api.model.shared;
 
-public interface CloudRuntimeEntity {
+import org.activiti.api.model.shared.model.ApplicationElement;
+
+public interface CloudRuntimeEntity extends ApplicationElement {
 
     String getAppName();
-
-    String getAppVersion();
 
     String getServiceName();
 

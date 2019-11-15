@@ -39,6 +39,7 @@ public abstract class CloudProcessInstanceEventImpl extends CloudRuntimeEventImp
             setProcessDefinitionKey(processInstance.getProcessDefinitionKey());
             setProcessDefinitionVersion(processInstance.getProcessDefinitionVersion());
             setParentProcessInstanceId(processInstance.getParentId());
+            setAppVersion(processInstance.getAppVersion());
         }
     }
 
