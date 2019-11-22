@@ -1,12 +1,16 @@
 package org.activiti.cloud.api.events.schema;
 
 import java.io.File;
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.module.jsonSchema.JsonSchema;
 import com.fasterxml.jackson.module.jsonSchema.JsonSchemaGenerator;
+import org.activiti.cloud.api.events.CloudRuntimeEventType;
 import org.activiti.cloud.api.model.shared.events.CloudVariableCreatedEvent;
 import org.activiti.cloud.api.model.shared.events.CloudVariableDeletedEvent;
 import org.activiti.cloud.api.model.shared.events.CloudVariableUpdatedEvent;
@@ -60,6 +64,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.activiti.cloud.api.events.CloudRuntimeEventType.*;
+import static org.assertj.core.api.Assertions.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(
@@ -77,19 +82,25 @@ public class JsonSchemaGeneratorTest {
         cloudEventRegistry.put(ACTIVITY_STARTED.name(), CloudBPMNActivityStartedEvent.class);
         cloudEventRegistry.put(ACTIVITY_CANCELLED.name(), CloudBPMNActivityCancelledEvent.class);
         cloudEventRegistry.put(ACTIVITY_COMPLETED.name(), CloudBPMNActivityCompletedEvent.class);
+
         cloudEventRegistry.put(ERROR_RECEIVED.name(), CloudBPMNErrorReceivedEvent.class);
+
         cloudEventRegistry.put(SIGNAL_RECEIVED.name(), CloudBPMNSignalReceivedEvent.class);
+
         cloudEventRegistry.put(TIMER_FIRED.name(), CloudBPMNTimerFiredEvent.class);
         cloudEventRegistry.put(TIMER_CANCELLED.name(), CloudBPMNTimerCancelledEvent.class);
         cloudEventRegistry.put(TIMER_SCHEDULED.name(), CloudBPMNTimerScheduledEvent.class);
         cloudEventRegistry.put(TIMER_EXECUTED.name(), CloudBPMNTimerExecutedEvent.class);
         cloudEventRegistry.put(TIMER_FAILED.name(), CloudBPMNTimerFailedEvent.class);
         cloudEventRegistry.put(TIMER_RETRIES_DECREMENTED.name(), CloudBPMNTimerRetriesDecrementedEvent.class);
+
         cloudEventRegistry.put(MESSAGE_WAITING.name(), CloudBPMNMessageWaitingEvent.class);
         cloudEventRegistry.put(MESSAGE_RECEIVED.name(), CloudBPMNMessageReceivedEvent.class);
         cloudEventRegistry.put(MESSAGE_SENT.name(), CloudBPMNMessageSentEvent.class);
+
         cloudEventRegistry.put(INTEGRATION_REQUESTED.name(), CloudIntegrationRequestedEvent.class);
         cloudEventRegistry.put(INTEGRATION_RESULT_RECEIVED.name(), CloudIntegrationResultReceivedEvent.class);
+
         cloudEventRegistry.put(PROCESS_DEPLOYED.name(), CloudProcessDeployedEvent.class);
         cloudEventRegistry.put(PROCESS_CREATED.name(), CloudProcessCreatedEvent.class);
         cloudEventRegistry.put(PROCESS_STARTED.name(), CloudProcessStartedEvent.class);
@@ -98,8 +109,11 @@ public class JsonSchemaGeneratorTest {
         cloudEventRegistry.put(PROCESS_SUSPENDED.name(), CloudProcessSuspendedEvent.class);
         cloudEventRegistry.put(PROCESS_RESUMED.name(), CloudProcessResumedEvent.class);
         cloudEventRegistry.put(PROCESS_UPDATED.name(), CloudProcessUpdatedEvent.class);
+
         cloudEventRegistry.put(SEQUENCE_FLOW_TAKEN.name(), CloudSequenceFlowTakenEvent.class);
+
         cloudEventRegistry.put(START_MESSAGE_DEPLOYED.name(), CloudStartMessageDeployedEvent.class);
+
         cloudEventRegistry.put(MESSAGE_SUBSCRIPTION_CANCELLED.name(), CloudMessageSubscriptionCancelledEvent.class);
 
         cloudEventRegistry.put(TASK_CREATED.name(), CloudTaskCreatedEvent.class);
@@ -109,6 +123,7 @@ public class JsonSchemaGeneratorTest {
         cloudEventRegistry.put(TASK_SUSPENDED.name(), CloudTaskSuspendedEvent.class);
         cloudEventRegistry.put(TASK_ACTIVATED.name(), CloudTaskActivatedEvent.class);
         cloudEventRegistry.put(TASK_CANCELLED.name(), CloudTaskCancelledEvent.class);
+
         cloudEventRegistry.put(TASK_CANDIDATE_USER_ADDED.name(), CloudTaskCandidateUserAddedEvent.class);
         cloudEventRegistry.put(TASK_CANDIDATE_USER_REMOVED.name(), CloudTaskCandidateUserRemovedEvent.class);
         cloudEventRegistry.put(TASK_CANDIDATE_GROUP_ADDED.name(), CloudTaskCandidateGroupAddedEvent.class);
@@ -130,6 +145,14 @@ public class JsonSchemaGeneratorTest {
 
     @Autowired
     private ObjectMapper objectMapper;
+
+    @Test
+    public void cloudEventRegistryShouldContainAllEnumValues() {
+        Set<String> eventTypeStringSet = EnumSet.allOf(CloudRuntimeEventType.class).stream()
+                .map(Enum::name).collect(Collectors.toSet());
+
+        assertThat(cloudEventRegistry.keySet()).containsAll(eventTypeStringSet);
+    }
 
     @Test
     public void generateSchema() {
