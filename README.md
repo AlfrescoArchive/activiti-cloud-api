@@ -9,12 +9,12 @@ All events have a set of common Activiti Cloud API properties defined in [org.ac
 
 | Name | Description | Type | Example |
 |------|-------------|------|---------|
-| appName | Application name, for a runtime bundle it is the value of the _activiti.cloud.application.name_ spring property. | string | myapp |
-| appVersion | Application version, for a runtime-bundle it is the value of the _activiti.cloud.application.version</i> spring property. | string | 1 |
-| serviceName | Service name, for a runtime-bundle it is the value of the _spring.application.name</i> spring property. | string | rb-myapp |
+| appName | Application name, for a runtime bundle it is the value of the `activiti.cloud.application.name` spring property. | string | myapp |
+| appVersion | Application version, for a runtime-bundle it is the value of the `activiti.cloud.application.version` spring property. | string | 1 |
+| serviceName | Service name, for a runtime-bundle it is the value of the `spring.application.name` spring property. | string | rb-myapp |
 | serviceFullName | Service full name, at the moment it is the same as serviceName. | string | rb-myapp |
-| serviceType | Service type, for a runtime-bundle it is the value of the _activiti.cloud.service.type</i> spring property. | string | runtime-bundle |
-| serviceVersion | Service version, for a runtime-bundle it is the value of the _activiti.cloud.service.version</i> spring property. | string | |
+| serviceType | Service type, for a runtime-bundle it is the value of the `activiti.cloud.service.type` spring property. | string | runtime-bundle |
+| serviceVersion | Service version, for a runtime-bundle it is the value of the `activiti.cloud.service.version` spring property. | string | |
 | sequenceNumber | Sequence index of the event if it is part of an aggregate within the message if part of the same transaction. |
 | messageId | ID of the message that carried the event, all the events that are part of the same tx are aggregated in the same message. | string | |
 | entityId | ID of the entity included in the message. | string | |
