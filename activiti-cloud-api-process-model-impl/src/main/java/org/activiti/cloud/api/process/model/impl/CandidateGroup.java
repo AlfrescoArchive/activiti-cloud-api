@@ -2,7 +2,7 @@ package org.activiti.cloud.api.process.model.impl;
 
 public class CandidateGroup {
 
-    String group;
+    private String group;
 
     public CandidateGroup(String group) {
         this.group = group;

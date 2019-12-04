@@ -2,7 +2,7 @@ package org.activiti.cloud.api.process.model.impl;
 
 public class CandidateUser {
 
-    String user;
+    private String user;
 
     public CandidateUser(String user) {
         this.user = user;
