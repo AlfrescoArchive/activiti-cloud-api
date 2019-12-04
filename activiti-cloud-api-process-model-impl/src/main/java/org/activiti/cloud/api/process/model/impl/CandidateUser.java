@@ -4,8 +4,8 @@ public class CandidateUser {
 
     String user;
 
-    public CandidateUser(String users) {
-        this.user = users;
+    public CandidateUser(String user) {
+        this.user = user;
     }
 
     public CandidateUser() {
