@@ -20,13 +20,6 @@
         <type>pom</type>
       </dependency>
       <dependency>
-        <groupId>org.activiti</groupId>
-        <artifactId>activiti-core-dependencies</artifactId>
-        <version>${activiti-core.version}</version>
-        <scope>import</scope>
-        <type>pom</type>
-      </dependency>
-      <dependency>
         <groupId>org.activiti.cloud.api</groupId>
         <artifactId>activiti-cloud-api-model-shared</artifactId>
         <version>${activiti-cloud-api.version}</version>
